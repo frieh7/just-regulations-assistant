@@ -1,0 +1,25 @@
+@font-face { font-family: Plex; font-weight: 400; src: url(node_modules/@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-400-normal.woff2); }
+@font-face { font-family: Plex; font-weight: 600; src: url(node_modules/@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-600-normal.woff2); }
+@font-face { font-family: Plex; font-weight: 700; src: url(node_modules/@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-700-normal.woff2); }
+@font-face { font-family: Naskh; font-weight: 400; src: url(node_modules/@fontsource/noto-naskh-arabic/files/noto-naskh-arabic-arabic-400-normal.woff2); }
+@font-face { font-family: Naskh; font-weight: 700; src: url(node_modules/@fontsource/noto-naskh-arabic/files/noto-naskh-arabic-arabic-700-normal.woff2); }
+@page { size: A4; margin: 13mm 14mm 12mm 14mm; }
+:root { --ink: #1c2430; --muted: #5b6573; --line: #d9dee5; --accent: #1f5f8b; --soft: #f2f5f8; }
+* { box-sizing: border-box; }
+body { font-family: Plex, Naskh, sans-serif; color: var(--ink); font-size: 9.3pt; line-height: 1.38; margin: 0; background: #fff; }
+h1 { font-size: 14.5pt; margin: 0 0 1mm; color: var(--accent); letter-spacing: -0.2px; }
+.sub { color: var(--muted); font-size: 8.4pt; margin-bottom: 3mm; border-bottom: 1.5px solid var(--accent); padding-bottom: 2mm; }
+h2 { font-size: 10.4pt; margin: 3mm 0 1.2mm; color: var(--accent); }
+p { margin: 0 0 1.4mm; }
+ul { margin: 0 0 1.4mm; padding-left: 4.5mm; }
+li { margin-bottom: 0.6mm; }
+table { width: 100%; border-collapse: collapse; margin: 0.8mm 0 1.6mm; font-size: 8.6pt; }
+th, td { border: 1px solid var(--line); padding: 1mm 1.6mm; text-align: left; vertical-align: top; }
+th { background: var(--soft); font-weight: 600; }
+.ar { font-family: Naskh, serif; direction: rtl; unicode-bidi: isolate; font-size: 9.6pt; }
+.ex { border-left: 2.5px solid var(--accent); background: var(--soft); padding: 1.2mm 2.4mm; margin: 0 0 1.4mm; }
+.ex b { color: var(--accent); }
+.flow { display: flex; align-items: stretch; gap: 1.5mm; margin: 1mm 0 1.4mm; font-size: 8.2pt; }
+.flow div { border: 1px solid var(--accent); border-radius: 2mm; padding: 1.2mm 1.6mm; flex: 1; text-align: center; background: #fff; }
+.flow span { align-self: center; color: var(--accent); font-weight: 700; }
+.note { color: var(--muted); font-size: 8pt; }

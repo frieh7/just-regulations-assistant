@@ -1,0 +1,31 @@
+﻿id,question,expected_answer,source,difficulty
+1,كم نسبة الغياب اللي بتحرمني من المادة؟,"إذا غبت أكثر من 20% من مجموع الساعات المقررة للمساق تُحرم من جميع الامتحانات اللاحقة فيه ويوضع لك الرمز (هـ) ""محروم بسبب الغياب""",degree_regulation_bachelor Art. 7(b),easy
+2,What is the minimum cumulative GPA needed to graduate?,2.00,degree_regulation_bachelor Art. 20(b),easy
+3,شو الحد الأدنى والأعلى لعدد الساعات اللي بسجلها بالفصل الأول أو الثاني؟,الحد الأدنى 9 ساعات والأعلى 18 ساعة، ويجوز أن يصل إلى 21 ساعة إذا كان تخرجك متوقفاً على ذلك,degree_regulation_bachelor Art. 6(d)/1,easy
+4,How many credit hours can I register in the summer semester?,At most 10 credit hours; up to 13 if you are expected to graduate at the end of that summer,degree_regulation_bachelor Art. 6(d)/4,easy
+5,علامتي 90 بالمادة، شو الرمز وكم نقطة؟,الرمز (أ) وقيمته 4 نقاط (المدى 85-94),degree_regulation_bachelor Art. 8(a) grade table,easy
+6,What is the lowest passing grade symbol?,"D- (د-), which is 50-52 and worth 1.5 points; F (هـ) is the failing symbol",degree_regulation_bachelor Art. 8(z)/1 + Art. 8(a),easy
+7,لحد أي أسبوع بقدر أنسحب من مادة نظرية؟,حتى نهاية الأسبوع 14 من بداية الفصل الأول أو الثاني (13 أسبوعاً للمساقات العملية، وأول 7 أسابيع في الفصل الصيفي),degree_regulation_bachelor Art. 12(b),easy
+8,مين الجهات اللي بتعطي أعذار طبية للطلاب؟,مركز صحي الجامعة ومستشفى الملك المؤسس عبدالله الجامعي وعيادات طب الأسنان التعليمية، كل حسب اختصاصه,medical_excuses Art. 2,easy
+9,خلال كم يوم لازم أسلّم العذر الطبي؟,خلال مدة أقصاها يومي عمل بعد انتهاء الإجازة الطبية، ويُسلَّم للمركز الصحي,medical_excuses Art. 4,easy
+10,هل بتقبل الجامعة عذر طبي من مستشفى خاص؟,لا، لا تُقبل الأعذار الطبية من القطاع الخاص إلا في الحوادث والعمليات الجراحية، على أن تكون مصدقة حسب الأصول ومرفقة بفواتير العلاج,medical_excuses Art. 5,easy
+11,Who decides to suspend classes because of snow or bad weather?,The University President,weather_suspension_policy (Decisions section),easy
+12,إذا تأخرت على الامتحان، لحد متى بقدر أدخل القاعة؟,لا يجوز الدخول بعد مرور ربع الوقت المخصص للامتحان,exam_regulations Art. 5,easy
+13,شو درجات الإنذار في عقوبات تأديب الطلبة؟,ثلاث درجات: الإنذار الأول، والمزدوج، والنهائي,student_discipline_2024 Art. 4(a)/6,easy
+14,"As a faculty member, how many office hours do I need per week?",At least 6 hours a week spread over at least 4 days (for faculty outside the clinical departments of Medicine and Dentistry),faculty_office_hours item 6 (first),easy
+15,هل التأمين الصحي إجباري على الطلاب؟,نعم، الاشتراك في التأمين الطبي إجباري لجميع طلبة الجامعة المسجلين ويسري فور تسديد الرسوم الجامعية,student_medical_insurance (scope article),easy
+16,إذا انحرمت بسبب الغياب، هل بتنحسب المادة بمعدلي؟ وبقدر أسقطها؟,نعم، يوضع الرمز (هـ) وتدخل نقاطه في حساب معدلاتك، ويجوز إسقاط المساق إلكترونياً خلال فترة الإسقاط المحددة؛ ولعميد الكلية تجاوز نسبة 20% بعذر قهري يقبله,degree_regulation_bachelor Art. 7(b),medium
+17,شو الفرق بين الانسحاب من مادة بالأسبوع الأول والانسحاب بعده؟,بالأسبوع الأول لا يثبت المساق في سجلك وتُرصد لك الرسوم؛ بعده يثبت المساق بملاحظة (منسحب) ولا يدخل في النجاح والرسوب، ولا تُرصد الرسوم، ولا يجوز أن ينزل عبؤك عن الحد الأدنى إلا بموافقة العميد,degree_regulation_bachelor Art. 12(a) and 12(b),medium
+18,"If I retake a course, which grade counts in my GPA?","The higher grade counts in the cumulative GPA, while all grades stay on the record; if both grades are equal the newer one counts; you may not retake a course you passed more than twice",degree_regulation_bachelor Art. 9,medium
+19,متى بنحط الطالب تحت المراقبة الأكاديمية؟,إذا نزل معدله التراكمي عن 2.00 في نهاية أي فصل غير صيفي بعد أن يكون قد احتُسب في معدله أكثر من 21 ساعة معتمدة,degree_regulation_bachelor Art. 10(a),medium
+20,غبت عن الامتحان الفصلي (الميد)، شو لازم أعمل؟,تقدم عذراً قهرياً أو مرضياً لرئيس القسم الذي يطرح المساق خلال أسبوع من الامتحان؛ إذا قُبل يُعقد لك امتحان تكميلي، وإذا لم يُقبل تأخذ صفراً,degree_regulation_bachelor Art. 8(b)/9,medium
+21,غبت عن الامتحان النهائي بعذر، شو بصير؟,"تقدم العذر إلكترونياً لعميد الكلية التي تطرح المساق خلال أسبوع كحد أقصى؛ إذا قُبل تسجل لك نتيجة ""غير مكتمل"" وتقدم الامتحان خلال الأسبوعين الأول والثاني من الفصل اللاحق",degree_regulation_bachelor Art. 8(b)/10 and 8(w),medium
+22,كم فصل بقدر أأجل دراستي؟,بحد أقصى 4 فصول متصلة أو متقطعة، ويجوز أن تصل إلى 6 فصول بقرار من مجلس الكلية؛ إذا تجاوزتها تفقد مقعدك,degree_regulation_bachelor Art. 13(a)/3,medium
+23,شو شروط التخرج من البكالوريوس؟,النجاح في جميع مساقات الخطة، ومعدل تراكمي لا يقل عن 2.00، وعدم تجاوز الحد الأعلى لمدة الدراسة، وأن تكون طالباً منتظماً في آخر فصل وأتممت في الجامعة نصف ساعات تخصصك على الأقل,degree_regulation_bachelor Art. 20,medium
+24,"As an employee, I was asked to work one hour on an official holiday. How many hours are counted?",At least 4 hours are counted for any work done in less than 2 actual hours on official holidays or weekends,staff_administrative_leave Art. 5,medium
+25,كيف بنحسب العبء التدريسي للمادة العملية (مختبر)؟,ساعة عبء واحدة لكل ساعتين عمليتين أسبوعياً؛ أما المساق النظري فيحسب بعدد ساعاته المعتمدة,faculty_teaching_load items 1-2,medium
+26,موظف اشتغل 4 ساعات عمل إضافي فعلي بعد الدوام، كم يوم إجازة إدارية بستحق ولحد متى لازم ياخدها؟,يوم واحد: كل ساعة عمل إضافي فعلي تُحسب ساعتين (4 × 2 = 8 ساعات) ويحسب يوم إجازة إدارية عن كل 8 ساعات؛ ويجب أن يأخذها خلال 6 أشهر من ترصيدها,"staff_administrative_leave Art. 3, 4 and 6",hard
+27,What are the conditions for a faculty member to get unpaid leave?,"Must be tenured (permanent service) with at least five years of continuous actual service; leave can be a semester, a year or more, but not more than eight consecutive years at a time, and a second leave only after a period equal to the leave already taken",faculty_unpaid_leave Art. 3(a),hard
+28,شو علامتي بمادة الذكاء الاصطناعي وهل رح أنجح؟,لا أعرف؛ ما عندي وصول لسجلاتك أو علاماتك، راجع بوابة الطالب أو مدرس المادة,Out of scope (personal data),hard
+29,هل رح تقبل اللجنة الطبية عذري؟,لا أعرف؛ قبول العذر قرار اللجنة الطبية الطلابية في المركز الصحي وقد ترفضه إذا لم يستوفِ الشروط، ويمكن الاستعلام عن قرارها من خلال عميد كليتك,"medical_excuses Art. 8, 9 and 11 (decision is the committee's)",hard
+30,When is the Data Mining final exam this semester?,I don't know; exam schedules are not in my documents. Check the exam schedule announced by the department or on the registration portal,Out of scope (not in the data),hard
