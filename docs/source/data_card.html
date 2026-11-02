@@ -3,29 +3,30 @@
 <link rel="stylesheet" href="style.css">
 <style>
 td:first-child { width: 19%; font-weight: 600; background: var(--soft); }
-table { font-size: 8.9pt; }
+table { font-size: 8.8pt; }
+.tr { color: var(--muted); }
 </style></head><body>
 <h1>Data Card: JUST Regulations Assistant</h1>
-<div class="sub">Team Project, Phase 1 · Hamza Moeen Rasheed Essa, Mohammad Ziad Abdelmajeed Al Rousan, A'sem Zakariya Ali Elfrieh · Data lead: Mohammad Ziad Abdelmajeed Al Rousan</div>
+<div class="sub">Team Project, Phase 1 · Users: JUST bachelor students, all majors · Hamza Moeen Rasheed Essa, Mohammad Ziad Abdelmajeed Al Rousan, A'sem Zakariya Ali Elfrieh · Data lead: Mohammad Ziad Abdelmajeed Al Rousan</div>
 <table>
-<tr><td>Source</td><td>Official documents of Jordan University of Science and Technology, all from the university's regulations page:
-<b>https://www.just.edu.jo/aboutjust/Pages/Regulations.aspx</b> (346 documents listed; we use 36).
+<tr><td>Source</td><td>Official documents of Jordan University of Science and Technology, from the university's regulations page:
+<b>https://www.just.edu.jo/aboutjust/Pages/Regulations.aspx</b> (346 documents listed; we use 36). The direct link to every PDF is in <code>data/SOURCES.md</code> and <code>data/sources.json</code>.
 <ul>
-<li><b>Students (24):</b> Degree Regulation No. 1/1987 (amended), exam regulations and exam pledge, medical excuses, disability accommodations, student discipline 2024, conduct code, admission fees and additional fees, aid fund, loans, level exams, change of major, student number, medical insurance, housing, electronic ID, transfer between universities, CIT field training, parallel program, weather suspension, exchange programs, campus entry, personal data changes.</li>
-<li><b>Staff (12):</b> faculty instructions, teaching load, office hours, administrative leave, attendance, unpaid leave, conferences, summer teaching, student evaluation of faculty, teaching assignments, fees for employees' children, lost and found.</li>
-</ul>
-The direct link to every PDF is in <code>data/SOURCES.md</code> (and <code>data/sources.json</code>).</td></tr>
-<tr><td>Permission</td><td>The documents are public: the university publishes them on its website for students and staff. We use them only for a non-commercial course project, keep them unchanged in <code>data/raw/</code>, and cite the document and article in every answer. If the project goes beyond the course (e.g. on the real university website), we will ask the university for written permission.</td></tr>
-<tr><td>Size</td><td>36 PDF files, 107 pages, about 247,000 characters of extracted text (roughly 100,000 tokens). Largest: faculty instructions (21 pages) and the degree regulation (17 pages); most others are 1 to 5 pages.</td></tr>
-<tr><td>Language and format</td><td>Arabic (one document, the exam pledge, is in English). PDF only. 19 files have a usable text layer; 17 are scans or use broken fonts and are read with Tesseract OCR (Arabic + English). Our script <code>src/extract_text.py</code> also repairs a font bug in the text-layer files that reverses the letter pair "لا" (895 corrupted words before the fix, 3 after), removes invisible direction marks and converts Arabic-Indic digits (١٤) to 14. Output: one UTF-8 text file per PDF in <code>data/text/</code>.</td></tr>
-<tr><td>Sensitive content</td><td>None. The documents contain general rules only: no student names, grades, records or personal contact details. We do not collect personal data, and the assistant refuses questions about a person's own record or a pending decision.</td></tr>
+<li><b>Student rules (24):</b> Degree Regulation No. 1/1987 (amended), exam regulations and exam pledge, medical excuses, disability accommodations, student discipline 2024, conduct code, admission and additional fees, aid fund, loans, level exams, change of major, student number, medical insurance, housing, electronic ID, transfer between universities, CIT field training, parallel program, weather suspension, exchange programs, campus entry, personal data changes.</li>
+<li><b>Staff rules (12):</b> faculty instructions, teaching load, office hours, administrative and unpaid leave, attendance, conferences, summer teaching, student evaluation of faculty, teaching assignments, fees for employees' children, lost and found.</li>
+<li><b>Planned next collection (not downloaded yet):</b> study plans and course catalogs for all bachelor majors, published on www.just.edu.jo (e.g. the <code>viewplan.aspx</code> pages).</li>
+</ul></td></tr>
+<tr><td>Permission</td><td>The documents are public: the university publishes them on its website for its students and staff. We use them only for a non-commercial course project, keep them unchanged in <code>data/raw/</code>, and cite the document and article in every answer. We have not asked for written permission; we will ask the university before any use beyond the course.</td></tr>
+<tr><td>Size</td><td>36 PDF files, 107 pages, 43,365 words (247,425 characters) of extracted text. About <b>80,000 tokens</b> with a modern tokenizer (o200k_base) or 167,000 with an older one (cl100k_base). Largest: faculty instructions (21 pages) and the degree regulation (17 pages).</td></tr>
+<tr><td>Language and format</td><td>Arabic PDFs (one short form, the exam pledge, is in English). 19 files have a usable text layer; 17 are scans or use broken fonts and are read with Tesseract OCR. <code>src/extract_text.py</code> repairs a font bug that reverses the letter pair <bdi class="ar" dir="rtl">«لا»</bdi> (895 corrupted words before, 3 after), removes invisible direction marks and converts Arabic-Indic digits. Output: one UTF-8 text file per PDF in <code>data/text/</code>. The system works in Arabic: students ask and are answered in Arabic.</td></tr>
+<tr><td>Sensitive content</td><td>None. The documents contain general rules only: no student names, grades, records or personal contact details. We collect no personal data, and the assistant refuses questions about a person's own record or a pending decision.</td></tr>
 <tr><td>Known quality problems</td><td><ul>
-<li>OCR makes mistakes in numbers and article numbers (e.g. "(0)" for "(5)") and sometimes drops list items. Numbers in the test set come from text-layer pages or were checked against the PDF page image.</li>
-<li>In some text-layer tables, numbers come out with reversed digits (e.g. 2017 as "7102"), mainly in the fee and unpaid-leave documents; amounts from these tables are not used until checked by hand.</li>
-<li>Rules can conflict: the medical-excuse deadline is 2 working days to the Health Center (Medical Excuses, Art. 4) but 2 weeks to the dean (Degree Regulation, Art. 7(e)); the assistant should give both.</li>
-<li>Some documents are old (e.g. 1987 regulation with later amendments); each answer shows its source so users can check.</li>
+<li>OCR misreads some numbers and article numbers (e.g. "(0)" for "(5)") and sometimes drops list items. Numbers used in the test set come from text-layer pages or were checked against the PDF page image.</li>
+<li>Some text-layer tables reverse digits (e.g. 2017 as "7102"), and one file (medical insurance) maps the letter <bdi class="ar" dir="rtl">«ف»</bdi> to <bdi class="ar" dir="rtl">«ا»</bdi> (<bdi class="ar" dir="rtl">«الاصل»</bdi> <span class="tr">[corrupted]</span> for <bdi class="ar" dir="rtl">«الفصل»</bdi> <span class="tr">[the semester]</span>). These files need a manual fix before their numbers are used.</li>
+<li>Rules can conflict: the medical-excuse deadline is 2 working days to the Health Center (Medical Excuses, Art. 4) but 2 weeks to the dean (Degree Regulation, Art. 7(e)).</li>
+<li>Some rules depend on the major or study-plan year; chunks will carry this metadata.</li>
 </ul></td></tr>
 <tr><td>Sample</td><td>5 real files in <code>data/samples/</code>: Degree Regulation (17 pages), Exam Regulations (scanned, 5 pages), Medical Excuses Instructions (1 page), Weather Suspension Policy (1 page), Faculty Office Hours Rules (1 page). All 36 PDFs are in <code>data/raw/</code> and their text in <code>data/text/</code>.</td></tr>
 </table>
-<p class="note">Seed test set: 30 questions with expected answers written from these documents before any model was run (<code>eval/seed_test_set.csv</code>). Repository: github.com/frieh7/just-regulations-assistant</p>
+<p class="note">Seed test set: 30 Arabic questions with expected answers written from these documents before any model was run (<code>eval/seed_test_set.csv</code>). Repository: github.com/frieh7/just-regulations-assistant</p>
 </body></html>

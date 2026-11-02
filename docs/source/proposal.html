@@ -1,67 +1,74 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><title>Proposal: JUST Regulations Assistant</title>
-<link rel="stylesheet" href="style.css"></head><body>
+<link rel="stylesheet" href="style.css">
+<style>
+.tr { color: var(--muted); font-size: 8.5pt; }
+.ph { border: 1.5px dashed #b4541a; background: #fff6ee; padding: 1.2mm 2.4mm; margin: 0.6mm 0 1.4mm; color: #7a3a10; font-size: 8.6pt; }
+</style></head><body>
 
 <h1>Proposal: JUST Regulations Assistant</h1>
-<div class="sub">Team Project, Phase 1: Problem and Data · Building LLM Systems: From Models to Production · Jordan University of Science and Technology (JUST), Irbid · 1 Nov 2026</div>
+<div class="sub">Team Project, Phase 1: Problem and Data · Building LLM Systems: From Models to Production · Jordan University of Science and Technology (JUST), Irbid</div>
 
-<h2>1. Team and roles (Phase 1)</h2>
+<h2>1. Team and roles</h2>
 <table>
 <tr><th style="width:34%">Member</th><th style="width:22%">Phase 1 role</th><th>Responsible for</th></tr>
-<tr><td>Hamza Moeen Rasheed Essa</td><td>Product lead + Evaluation lead</td><td>User and problem section; the 30 test questions, expected answers and scoring method</td></tr>
-<tr><td>Mohammad Ziad Abdelmajeed Al Rousan</td><td>Data lead</td><td>Collecting the 36 documents with links, checking extracted Arabic text and OCR numbers, the data card</td></tr>
+<tr><td>Hamza Moeen Rasheed Essa</td><td>Product lead + Evaluation lead</td><td>User and problem section; the 30 test questions, expected answers and scoring</td></tr>
+<tr><td>Mohammad Ziad Abdelmajeed Al Rousan</td><td>Data lead</td><td>Collecting the 36 documents with links, checking extracted Arabic text and OCR numbers, data card</td></tr>
 <tr><td>A'sem Zakariya Ali Elfrieh</td><td>Engineering lead</td><td>GitHub repository, text-extraction pipeline and tests, planned architecture on free compute</td></tr>
 </table>
 <p class="note">Roles rotate at the start of every phase, so each member holds every role by the end of the project.</p>
 
 <h2>2. User and problem</h2>
-<p><b>Users:</b> JUST students and staff who visit the university website with a rules question. Two concrete groups and tasks:
-(1) <b>undergraduate students</b> checking academic rules: absence limits, withdrawal, exam absence and excuses, grades and GPA, probation, postponement, graduation, discipline;
-(2) <b>faculty and administrative staff</b> checking work rules: office hours, teaching load, administrative and unpaid leave, attendance, summer teaching.</p>
-<p><b>Today:</b> the answers sit in separate official PDFs. People open the documents one by one or ask colleagues and friends, and can get wrong answers on rules that cost grades, fees or leave days.</p>
-<p><b>Evidence so far (from the data itself):</b></p>
+<p><b>User:</b> JUST bachelor students, all majors. <b>Task:</b> finding the correct academic rule, for example absence limits, withdrawal deadlines, exam absence and excuses, grades and GPA, probation, postponement, graduation conditions and discipline.</p>
+<p><b>Today:</b> the rules are spread across separate official PDFs. Students open them one by one or ask friends, and a wrong answer can cost them grades, fees or a semester.</p>
+<p><b>Evidence:</b></p>
 <ul>
-<li><b>Fragmentation:</b> the official regulations page lists <b>346 separate PDF documents</b>, by title only, with no search across their contents. A simple question such as "can I still withdraw?" needs the 17-page degree regulation.</li>
-<li><b>Not searchable:</b> 17 of the 36 documents we selected are scans or use broken fonts, so their text cannot be searched or copied; the other 19 produce <b>895 corrupted words</b> when copied (the letter pair "لا" comes out reversed).</li>
-<li><b>Conflicting rules:</b> a student's medical excuse must reach the Health Center within <b>2 working days</b> (Medical Excuses Instructions, Art. 4), but the degree regulation gives <b>2 weeks</b> to submit it to the dean (Art. 7(e)).</li>
+<li><b>Fragmentation:</b> the official regulations page lists <b>346 separate PDF documents</b>, by title only, with no search across their contents. "Can I still withdraw?" needs the 17-page degree regulation.</li>
+<li><b>Not searchable:</b> 17 of our 36 documents are scans or use broken fonts, so their text cannot be searched or copied; copying from the other 19 produces <b>895 corrupted words</b>.</li>
+<li><b>Conflicting rules:</b> a medical excuse must reach the Health Center within <b>2 working days</b> (Medical Excuses Instructions, Art. 4), but the degree regulation allows <b>2 weeks</b> to submit it to the dean (Art. 7(e)).</li>
 </ul>
+<div class="ph"><b>[PLACEHOLDER: real student questions, to be added before submission.]</b> 3 to 5 real questions collected from JUST bachelor students (exact wording, date collected, major; no names), with how many students we asked.</div>
 
 <h2>3. What the system will do</h2>
-<p>A chat assistant for the JUST website that answers questions in Arabic or English, <b>only from the official documents</b>, and cites the document and article with every answer. Questions that need a personal record, a committee decision or data not in the documents get "I don't know" plus the office to contact.</p>
-<div class="ex"><b>Student:</b> <span class="ar">لحد أي أسبوع بقدر أنسحب من مادة نظرية؟</span><br>
-<b>Answer:</b> <span class="ar">حتى الأسبوع 14 من بداية الفصل (13 للمساقات العملية، وأول 7 أسابيع في الصيفي). يثبت المساق "منسحب" ولا ترصد الرسوم.</span><br>Source: Degree Regulation, Art. 12(b).</div>
-<div class="ex"><b>Staff:</b> How many office hours do I need per week?<br>
-<b>Answer:</b> At least 6 hours a week over at least 4 days (non-clinical faculty). Source: Office Hours Rules, item 6.</div>
-<div class="ex"><b>Student:</b> <span class="ar">هل رح تقبل اللجنة الطبية عذري؟</span><br>
-<b>Answer:</b> <span class="ar">لا أعرف؛ قبول العذر قرار اللجنة الطبية الطلابية في المركز الصحي، ويمكن الاستعلام عن قرارها من خلال عميد كليتك.</span></div>
+<p>A chat assistant for JUST bachelor students. Students ask in Arabic and the assistant answers in Arabic, <b>only from the official JUST documents</b>, citing the document and article with every answer. If the answer needs a personal record or a committee decision, or is not in the documents, it says <bdi class="ar" dir="rtl">«لا أعرف»</bdi> ["I don't know"] and names the responsible office.</p>
+<div class="ex"><b>Student:</b> <span class="ar">لحد أي أسبوع بقدر أنسحب من مادة نظرية؟</span> <span class="tr">[Until which week can I withdraw from a theory course?]</span><br>
+<b>Answer:</b> <span class="ar">حتى 14 أسبوعاً من بداية الفصل (13 للمساقات العملية، وأول 7 أسابيع في الصيفي).</span> <span class="tr">[Up to 14 weeks from the start of the semester (13 for practical courses, the first 7 weeks in summer).]</span><br>
+Source: Degree Regulation, Art. 12(b).</div>
+<div class="ex"><b>Student:</b> <span class="ar">غبت عن الامتحان الفصلي، شو لازم أعمل؟</span> <span class="tr">[I missed the midterm exam. What should I do?]</span><br>
+<b>Answer:</b> <span class="ar">تقدم عذراً لرئيس القسم الذي يطرح المساق خلال أسبوع؛ إذا قُبل يُعقد لك امتحان تكميلي، وإلا توضع لك علامة صفر.</span> <span class="tr">[Submit an excuse to the head of the department offering the course within a week; if accepted you get a makeup exam, otherwise a zero.]</span><br>
+Source: Degree Regulation, Art. 8(b)/9.</div>
+<div class="ex"><b>Student:</b> <span class="ar">هل رح تقبل اللجنة الطبية عذري؟</span> <span class="tr">[Will the medical committee accept my excuse?]</span><br>
+<b>Answer:</b> <span class="ar">لا أعرف؛ قبول العذر قرار اللجنة الطبية الطلابية في المركز الصحي، ويمكن الاستعلام عن قرارها من خلال عميد كليتك.</span> <span class="tr">[I don't know; this is the Student Medical Committee's decision at the Health Center. You can ask about it through your dean.]</span></div>
 
 <h2>4. Data</h2>
 <table>
-<tr><th>Source (all on just.edu.jo, official regulations page)</th><th style="width:16%">Docs / pages</th><th style="width:22%">Status</th></tr>
+<tr><th>Source (official JUST regulations page)</th><th style="width:16%">Docs / pages</th><th style="width:22%">Status</th></tr>
 <tr><td>Student rules: degree regulation, exams, medical excuses, discipline 2024, conduct code, fees, aid and loans, level exams, change of major, insurance, housing, weather suspension, and more</td><td>24 / 73</td><td>In hand, text extracted</td></tr>
-<tr><td>Staff rules: faculty instructions, teaching load, office hours, administrative and unpaid leave, attendance, conferences, summer teaching</td><td>12 / 34</td><td>In hand, text extracted</td></tr>
+<tr><td>Rules mainly about university staff; a few matter to students (faculty office hours, student evaluation of faculty), the rest are kept but are not the focus</td><td>12 / 34</td><td>In hand, text extracted</td></tr>
+<tr><td><b>Planned next collection:</b> study plans and course catalogs for all bachelor majors (course codes, credit hours, prerequisites), published on www.just.edu.jo</td><td>not yet</td><td>Phase 2</td></tr>
 </table>
-<p>36 PDFs, 107 pages, about 247,000 characters of Arabic text (roughly 100k tokens). Details, links and samples: data card and <code>data/SOURCES.md</code>.</p>
+<p>In hand: 36 Arabic PDFs, 107 pages, about 80,000 tokens. Details, links and samples: data card and <code>data/SOURCES.md</code>.</p>
 
-<h2>5. Planned architecture (first version)</h2>
-<div class="flow"><div>Question<br>(Arabic / English)</div><span>→</span><div>Retrieve top chunks<br>multilingual embeddings + keyword search, with document and article metadata</div><span>→</span><div>LLM (free NVIDIA / HF API)<br>answers only from the chunks</div><span>→</span><div>Answer + citation<br>(document, article)</div></div>
-<p>If retrieval confidence is low or the question is personal, the system answers "I don't know" and names the office. <b>Room to grow (RAG + agent):</b> later phases add calculator tools the agent can call (absence limit for a course, GPA after retaking a course, administrative-leave days from overtime hours), compared against the plain RAG version on the same test set.</p>
+<h2>5. Planned architecture</h2>
+<div class="flow"><div>Question<br>(Arabic)</div><span>→</span><div>Retrieve top chunks<br>one chunk per article; keyword + multilingual embedding search; metadata: document, article, page</div><span>→</span><div>LLM (free NVIDIA / HF API)<br>answers only from the chunks</div><span>→</span><div>Arabic answer + citation<br>(document, article)</div></div>
+<p>If retrieval confidence is low, or the question is personal or needs a decision, the system says <bdi class="ar" dir="rtl">«لا أعرف»</bdi> ["I don't know"] and names the office. <b>Room to grow (RAG + agent):</b> later phases add tools the agent can call: an absence-limit calculator, a GPA-after-retake calculator, and a study-plan prerequisite checker. These are compared against plain RAG on the same test set.</p>
 
 <h2>6. How we will measure success</h2>
+<p><b>Correct answer:</b> it states the same rule and every number (weeks, %, hours, GPA) as the expected answer, and nothing that contradicts the documents. <b>Numbers we report</b> (computed by <code>eval/score.py</code>), overall and by difficulty:</p>
 <ul>
-<li><b>Answer accuracy</b> on the test set: the answer matches the expected answer (manual review, with an LLM judge as a helper).</li>
-<li><b>Citation accuracy:</b> share of answers that cite the right document and article.</li>
-<li><b>Correct refusals:</b> share of out-of-scope questions answered with "I don't know" (3 now; more in Phase 2).</li>
-<li><b>Retrieval recall@5:</b> share of questions whose source article is in the top 5 retrieved chunks.</li>
+<li><b>Answer accuracy</b>: manual review, with an LLM judge as a helper that a person checks.</li>
+<li><b>Citation accuracy</b>: the citation names the right document and article.</li>
+<li><b>Refusal accuracy</b>: out-of-scope questions answered <bdi class="ar" dir="rtl">«لا أعرف»</bdi> ["I don't know"], and answerable questions not refused.</li>
+<li><b>Retrieval recall@5</b>: the source article is among the top 5 retrieved chunks.</li>
 </ul>
-<p>Seed test set: 30 questions (15 easy, 10 medium, 5 hard; 25 student, 5 staff; 21 Arabic, 9 English). Expected answers were written from the documents before running any model.</p>
+<p><b>Baseline:</b> keyword (BM25) retrieval + the same LLM and prompt. Every later version must beat it on the same 30 questions. Seed test set: 30 Arabic questions (15 easy, 10 medium, 5 hard; 3 refusals), answers written from the documents before running any model.</p>
 
-<h2>7. Risks and backup plan</h2>
+<h2>7. Risks</h2>
 <ul>
-<li><b>OCR errors in numbers and article numbers</b> (e.g. digits reversed in fee tables). Backup: check every number used in the test set against the PDF page by hand; keep key tables as hand-checked CSV.</li>
-<li><b>Conflicting or outdated documents.</b> Backup: store the document and decision date with each chunk; when two rules differ, give both with their sources.</li>
-<li><b>Wrong answers can cost grades, fees or leave.</b> Backup: always show the source; label the assistant as guidance, not an official decision.</li>
-<li><b>Broad scope (students and staff).</b> Backup: version 1 covers the 36 documents above; more of the 346 are added only after the test set passes.</li>
-<li><b>Arabic quality and limits of free models.</b> Backup: compare models in Phase 2; use a closed model only for development comparison.</li>
+<li><b>OCR errors in numbers and article numbers.</b> Backup: numbers in the test set come from text-layer pages or were checked against the PDF page image; key tables (grades, fees) are kept as hand-checked CSV.</li>
+<li><b>Answers can depend on the major and the study-plan year.</b> Backup: every document and chunk carries metadata (major, plan year); when an answer depends on them, the system first asks the student's major.</li>
+<li><b>Conflicting or outdated rules.</b> Backup: store the decision date with each chunk; when two rules differ, give both with their sources.</li>
+<li><b>A wrong answer can cost grades or fees.</b> Backup: always cite the source; present the assistant as guidance, not an official decision.</li>
+<li><b>Arabic quality and limits of free models; scope.</b> Backup: compare free models on the test set in Phase 2; add the study plans only after the regulations reach the baseline.</li>
 </ul>
 </body></html>
