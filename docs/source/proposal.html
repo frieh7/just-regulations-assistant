@@ -3,7 +3,6 @@
 <link rel="stylesheet" href="style.css">
 <style>
 .tr { color: var(--muted); font-size: 8.5pt; }
-.ph { border: 1.5px dashed #b4541a; background: #fff6ee; padding: 1.2mm 2.4mm; margin: 0.6mm 0 1.4mm; color: #7a3a10; font-size: 8.6pt; }
 </style></head><body>
 
 <h1>Proposal: JUST Regulations Assistant</h1>
@@ -26,8 +25,8 @@
 <li><b>Fragmentation:</b> the official regulations page lists <b>346 separate PDF documents</b>, by title only, with no search across their contents. "Can I still withdraw?" needs the 17-page degree regulation.</li>
 <li><b>Not searchable:</b> 17 of our 36 documents are scans or use broken fonts, so their text cannot be searched or copied; copying from the other 19 produces <b>895 corrupted words</b>.</li>
 <li><b>Conflicting rules:</b> a medical excuse must reach the Health Center within <b>2 working days</b> (Medical Excuses Instructions, Art. 4), but the degree regulation allows <b>2 weeks</b> to submit it to the dean (Art. 7(e)).</li>
+<li><b>Answers need several clauses:</b> 7 of the 27 answerable questions in our test set combine two or more clauses, and 4 of them combine clauses on different pages. For example, "which grade counts in my GPA after I retake a course?" needs Art. 9/4 (p. 10) together with the grade table in Art. 8(a) (p. 6).</li>
 </ul>
-<div class="ph"><b>[PLACEHOLDER: real student questions, to be added before submission.]</b> 3 to 5 real questions collected from JUST bachelor students (exact wording, date collected, major; no names), with how many students we asked.</div>
 
 <h2>3. What the system will do</h2>
 <p>A chat assistant for JUST bachelor students. Students ask in Arabic and the assistant answers in Arabic, <b>only from the official JUST documents</b>, citing the document and article with every answer. If the answer needs a personal record or a committee decision, or is not in the documents, it says <bdi class="ar" dir="rtl">«لا أعرف»</bdi> ["I don't know"] and names the responsible office.</p>
