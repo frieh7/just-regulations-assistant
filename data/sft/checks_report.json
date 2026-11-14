@@ -1,0 +1,15 @@
+{
+ "link": {
+  "high": 2127,
+  "mid": 134,
+  "low": 28
+ },
+ "numbers_not_in_text": [],
+ "test_leaks": [],
+ "dup_questions": [],
+ "counts": {
+  "regulation": 2289,
+  "plan": 623,
+  "refusal": 46
+ }
+}

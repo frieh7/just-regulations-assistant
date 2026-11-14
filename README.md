@@ -7,7 +7,7 @@ answer. If a question needs a personal record or a committee decision, or the an
 not in the documents, it answers "لا أعرف" ["I don't know"] and names the responsible office.
 
 Course: *Building LLM Systems: From Models to Production*, team project.
-Current status: **Phase 1, Problem and Data.**
+Current status: **Phase 2, Train a Small Model and Evaluate It** (data ready; training scripts in progress).
 
 ## Team (Phase 1 roles)
 
@@ -75,7 +75,22 @@ python3 eval/score.py predictions.csv
 human reviewer). The script reports answer accuracy, citation accuracy (right document
 and article) and refusal accuracy, overall and by difficulty.
 
-## Planned data (Phase 2)
+## Phase 2 data
 
-Study plans and course catalogs for all bachelor majors are published on
-www.just.edu.jo but are not downloaded yet. They are the next planned collection.
+Built from one clean article library (`data/clean/chunks.jsonl`: 3,004 chunks from 346 official
+documents). Full description: `docs/PHASE2_DATA.md`. Conflicts and open decisions: `docs/DECISIONS.md`.
+
+| What | Where | Size |
+|---|---|---|
+| Continued-pretraining text, split by document | `data/cpt/train.jsonl`, `data/cpt/heldout.jsonl` | 392 / 44 documents |
+| SFT chat pairs (system, user, assistant), split by fact | `data/sft/train.jsonl`, `data/sft/val.jsonl` | 7,986 / 888 pairs |
+| Facts (one answer, three question phrasings: 2 MSA + 1 Jordanian) | `data/sft/facts.jsonl` | 2,958 facts |
+| Readable question/answer table | `data/qa_table/just_qa_dataset.csv` | 8,874 rows |
+| Test questions with gold chunks (never used in training) | `eval/seed_test_set_with_gold.csv`, `tests/test_questions.csv` | 30 |
+
+Every answer ends with its source (document and article). Checks (no test-set leakage, no
+duplicate questions, every number found in the source text): `data/sft/checks_report.json`.
+
+Rebuild helpers are in `tools/data_build/` (they use absolute paths from the build machine; edit the
+paths at the top). `tools/model_bakeoff/` has the notebook that compares candidate base models
+(tokens per word, held-out loss, zero-shot answers) before training.
