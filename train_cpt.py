@@ -1,9 +1,11 @@
 """Stage 1: continued pretraining (next-token loss on the study-plan documents, LoRA).
 
 Usage:  python train_cpt.py
-NOTE: reconstructed from the settings of the Kaggle notebook "Continued pretraining"
-(seq 1536, LR 1e-4, 3 epochs, LoRA, fixed seed). The reported numbers (held-out perplexity
-3.37 -> 1.58) come from that notebook; re-check this script against it before final submission.
+NOTE: this script was written from the recorded settings of the Kaggle notebook "Continued pretraining"
+(seq 1536, LR 1e-4, 3 epochs = 60 steps, LoRA, seed 42). The reported numbers (held-out perplexity
+3.37 -> 1.58) come from that notebook, whose source cells are not copied here. Batch size (2 x 8),
+warmup and the collator are NOT verified against the notebook, so re-running this script may give
+slightly different numbers than results/cpt_results.md.
 """
 import json, math, os
 import torch
