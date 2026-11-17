@@ -1,2 +1,9 @@
 pymupdf>=1.24
 pytest
+torch
+transformers
+peft
+datasets
+accelerate
+pyyaml
+matplotlib

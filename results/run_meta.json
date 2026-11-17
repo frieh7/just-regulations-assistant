@@ -1,0 +1,26 @@
+{
+ "settings": {
+  "max_new_tokens": 200,
+  "do_sample": false,
+  "repetition_penalty": 1.1,
+  "seed": 42,
+  "system": "أنت مساعد لطلاب البكالوريوس في جامعة العلوم والتكنولوجيا الأردنية، تجيب عن الأسئلة حول الخطط الدراسية بدقة، وإذا ما كانت المعلومة موجودة بالوثائق تقول إنك لا تعرف."
+ },
+ "models": {
+  "base": {
+   "path": "Qwen/Qwen2.5-0.5B",
+   "heldout_ppl": 2.8344727234107667,
+   "avg_latency_s": 22.6622567312
+  },
+  "cpt": {
+   "path": "/kaggle/input/notebooks/asemfrieh/continued-pretraining/cpt_model",
+   "heldout_ppl": 1.5740446860204678,
+   "avg_latency_s": 36.39749205343337
+  },
+  "sft": {
+   "path": "/kaggle/input/notebooks/asemfrieh/supervised-fine-tuning-2/sft_from_cpt",
+   "heldout_ppl": 1.8974421482000297,
+   "avg_latency_s": 26.50978384396679
+  }
+ }
+}

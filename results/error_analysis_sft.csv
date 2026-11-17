@@ -1,0 +1,6 @@
+cause,count,question_ids,example
+hallucination,16,"2,3,6,7,8,9,10,11,14,15,16,17,18,23,26,27","Q2: says 3 credit hours for Biomechanics, expected 2 (right plan number 847, wrong fact)"
+refusal error,6,"1,5,19,21,22,24","Q5: refuses 'what must I pass before Dynamics' although the plan contains it"
+format failure,2,"20,25","Q25: degenerate repetition 'تخصص تخصص تخصص' and the wrong template"
+knowledge missing,0,"","not separated from hallucination in this first pass (graders may reclassify)"
+test-case problem,0,"","none found; expected answers could not be checked against the plan text"

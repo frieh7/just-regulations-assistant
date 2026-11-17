@@ -7,7 +7,7 @@ answer. If a question needs a personal record or a committee decision, or the an
 not in the documents, it answers "لا أعرف" ["I don't know"] and names the responsible office.
 
 Course: *Building LLM Systems: From Models to Production*, team project.
-Current status: **Phase 1, Problem and Data.**
+Current status: **Phase 2, Train a small model and evaluate it** (Phase 1 material below; Phase 2 section at the end).
 
 ## Team (Phase 1 roles)
 
@@ -79,3 +79,46 @@ and article) and refusal accuracy, overall and by difficulty.
 
 Study plans and course catalogs for all bachelor majors are published on
 www.just.edu.jo but are not downloaded yet. They are the next planned collection.
+
+---
+
+# Phase 2 — Train a small model and evaluate it
+
+A small model (Qwen2.5-0.5B base) trained in two stages (CPT then SFT) on the JUST **bachelor study plans** (78 plans), scored on 30 new test questions (`tests/test_questions.csv`). Phase 2 uses a different scope from Phase 1 (study plans, not regulations); the Phase 1 test set stays in `eval/` for Phase 3.
+
+## Checkpoints (not in Git)
+Private Hugging Face repos, organization `llm-course-just-plans` (reader access: `a-mustafa`):
+- CPT: https://huggingface.co/llm-course-just-plans/just-plans-cpt
+- SFT: https://huggingface.co/llm-course-just-plans/just-plans-sft
+
+## Setup
+```bash
+pip install -r requirements.txt
+cp .env.example .env     # only needed to push to the Hub; use Kaggle/Colab Secrets otherwise
+```
+Training was run on a Kaggle T4. Settings are in `config.yaml`; seed is 42.
+
+## Train
+```bash
+python train_cpt.py                  # -> cpt_model/ , results/cpt/
+python train_sft.py --start cpt      # -> sft_from_cpt/ , results/sft_cpt/
+python train_sft.py --start base     # optional comparison (not run in Phase 2)
+```
+CPT corpus (cleaned text of the study plans, split by document) is in `data/cpt/`
+(`cpt_plans_train.jsonl`: 336 chunks, 404,228 tokens; `cpt_plans_heldout.jsonl`: 28 chunks, 30,660 tokens).
+
+## Score
+```bash
+python score.py run                  # base, cpt, sft on the same 30 questions -> results/scores_<model>.csv
+# two graders fill grader_1 / grader_2 (1, 0.5, 0) for manual rows; agreed value goes in `score`
+python score.py summarize            # accuracy, refusal accuracy, agreement -> SCOREBOARD.md
+```
+All three models are called through the same function (`ask` in `score.py`).
+
+## Data
+- `data/sft_pairs.jsonl`: 1,930 pairs (1,869 plan questions + 61 refusals on 21 topics). `split` column: train/val, split by fact.
+- `tests/test_questions.csv`: 30 test questions (15 easy / 10 medium / 5 hard, 3 refusals).
+- No test question appears in the SFT data (checked for exact and near-text overlap).
+
+## Results
+See `SCOREBOARD.md` and `results/`.
