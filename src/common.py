@@ -1,5 +1,7 @@
 """Shared helpers: config, seeding, model loading, chat template, SFT tokenisation."""
-import os, random, yaml
+import random
+
+import yaml
 
 
 def load_config(path="config.yaml"):
@@ -7,8 +9,11 @@ def load_config(path="config.yaml"):
 
 
 def set_seed(seed):
-    import numpy as np, torch
-    random.seed(seed); np.random.seed(seed); torch.manual_seed(seed)
+    import numpy as np
+    import torch
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(seed)
 

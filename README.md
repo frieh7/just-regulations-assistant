@@ -7,7 +7,7 @@ answer. If a question needs a personal record or a committee decision, or the an
 not in the documents, it answers "لا أعرف" ["I don't know"] and names the responsible office.
 
 Course: *Building LLM Systems: From Models to Production*, team project.
-Current status: **Phase 1, Problem and Data.**
+Current status: **Phase 2, Train a small model and evaluate it** (Phase 1 material below; Phase 2 section at the end).
 
 ## Team (Phase 1 roles)
 
