@@ -2,3 +2,8 @@ __pycache__/
 *.pyc
 .DS_Store
 .env
+*.safetensors
+*.bin
+cpt_model/
+sft_from_*/
+*_tmp/

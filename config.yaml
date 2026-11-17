@@ -1,0 +1,41 @@
+# All training / scoring settings for Phase 2 (JUST study-plans assistant)
+seed: 42
+base_model: Qwen/Qwen2.5-0.5B
+
+system_prompt: >-
+  أنت مساعد لطلاب البكالوريوس في جامعة العلوم والتكنولوجيا الأردنية،
+  تجيب عن الأسئلة حول الخطط الدراسية بدقة، وإذا ما كانت المعلومة موجودة
+  بالوثائق تقول إنك لا تعرف.
+
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+
+cpt:                       # train_cpt.py
+  train_file: data/cpt/cpt_plans_train.jsonl
+  heldout_file: data/cpt/cpt_plans_heldout.jsonl
+  seq_len: 1536
+  epochs: 3
+  learning_rate: 1.0e-4
+  output_dir: cpt_model
+
+sft:                       # train_sft.py
+  data_file: data/sft_pairs.jsonl     # column "split" = train / val (split by fact, not random)
+  start: cpt                          # "cpt" or "base"
+  cpt_model_dir: cpt_model
+  max_len: 512
+  epochs: 3
+  learning_rate: 1.0e-4
+  per_device_batch_size: 4
+  grad_accum_steps: 4                 # effective batch 16
+  warmup_steps: 10
+  output_dir: sft_from_cpt            # sft_from_base when start = base
+  end_token: "<|endoftext|>"          # the base model could not generate <|im_end|> reliably
+
+score:                     # score.py
+  tests_file: tests/test_questions.csv
+  max_new_tokens: 200
+  greedy: true
+  repetition_penalty: 1.1
