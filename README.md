@@ -104,8 +104,8 @@ python train_cpt.py                  # -> cpt_model/ , results/cpt/
 python train_sft.py --start cpt      # -> sft_from_cpt/ , results/sft_cpt/
 python train_sft.py --start base     # optional comparison (not run in Phase 2)
 ```
-CPT corpus (cleaned text of the study plans, train/held-out split by document) goes in `data/cpt/`
-(`cpt_plans_train.jsonl`: 404,228 tokens, `cpt_plans_heldout.jsonl`: 30,660 tokens; a sample is in the repo if large).
+CPT corpus (cleaned text of the study plans, split by document) is in `data/cpt/`
+(`cpt_plans_train.jsonl`: 336 chunks, 404,228 tokens; `cpt_plans_heldout.jsonl`: 28 chunks, 30,660 tokens).
 
 ## Score
 ```bash
